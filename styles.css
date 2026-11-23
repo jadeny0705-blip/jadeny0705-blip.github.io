@@ -247,7 +247,7 @@ svg {
   width: min(100%, calc(var(--max-width) + var(--page-pad) * 2));
   min-height: 100svh;
   margin: 0 auto;
-  padding: 150px var(--page-pad) 100px;
+  padding: 130px var(--page-pad) 74px;
 }
 
 .hero-copy {
@@ -465,7 +465,7 @@ svg {
 
 .hero-stats strong {
   font-family: var(--serif);
-  font-size: clamp(23px, 2.4vw, 30px);
+  font-size: clamp(31px, 2.8vw, 38px);
   font-weight: 700;
 }
 
@@ -479,7 +479,7 @@ svg {
   grid-area: nav;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 10px;
-  margin-top: 48px;
+  margin-top: 34px;
 }
 
 .hero-section-nav a {
