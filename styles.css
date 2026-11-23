@@ -239,7 +239,8 @@ svg {
   grid-template-columns: minmax(0, 1.08fr) minmax(380px, 0.72fr);
   grid-template-areas:
     "copy visual"
-    "stats visual";
+    "stats visual"
+    "nav nav";
   gap: clamp(48px, 6vw, 102px);
   row-gap: 0;
   align-items: center;
@@ -471,6 +472,65 @@ svg {
 .hero-stats span {
   margin-left: 3px;
   color: var(--muted);
+}
+
+.hero-section-nav {
+  display: grid;
+  grid-area: nav;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+  margin-top: 48px;
+}
+
+.hero-section-nav a {
+  display: flex;
+  min-height: 118px;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-direction: column;
+  padding: 18px 20px;
+  color: var(--ink);
+  background: rgba(255, 250, 240, 0.58);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  transition:
+    color 220ms ease,
+    background-color 220ms ease,
+    border-color 220ms ease,
+    transform 220ms ease;
+}
+
+.hero-section-nav a > span {
+  color: var(--muted);
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.08em;
+}
+
+.hero-section-nav a strong {
+  font-family: var(--serif);
+  font-size: clamp(20px, 2vw, 28px);
+  line-height: 1.15;
+}
+
+.hero-section-nav svg {
+  width: 18px;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: transform 200ms ease;
+}
+
+.hero-section-nav a:hover {
+  color: var(--cream);
+  background: var(--ink);
+  border-color: var(--ink);
+  transform: translateY(-3px);
+}
+
+.hero-section-nav a:hover svg {
+  transform: translateX(3px);
 }
 
 .hero-visual {
@@ -2289,24 +2349,53 @@ main section[id] {
   }
 
   .hero {
-    display: flex;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) clamp(104px, 30vw, 132px);
+    grid-template-rows: auto auto auto auto auto auto auto auto;
+    grid-template-areas: none;
+    column-gap: 14px;
+    row-gap: 0;
+    align-items: start;
     min-height: auto;
-    flex-direction: column;
-    align-items: stretch;
     padding: 118px var(--page-pad) 64px;
   }
 
+  .hero-copy {
+    display: contents;
+  }
+
+  .eyebrow {
+    grid-column: 1 / -1;
+    grid-row: 1;
+    margin-bottom: 22px;
+  }
+
+  .hero-greeting {
+    grid-column: 1;
+    grid-row: 2;
+    align-self: end;
+  }
+
+  .hero-name {
+    grid-column: 1;
+    grid-row: 3;
+    align-self: start;
+  }
+
   .hero-name > span {
-    font-size: clamp(70px, 20vw, 96px);
-    letter-spacing: -0.09em;
+    font-size: clamp(54px, 15vw, 68px);
+    letter-spacing: -0.08em;
   }
 
   .hero-name > small {
-    margin-top: 12px;
-    font-size: 10px;
+    margin-top: 9px;
+    font-size: 9px;
+    letter-spacing: 0.22em;
   }
 
   .hero-role {
+    grid-column: 1 / -1;
+    grid-row: 4;
     margin-top: 22px;
   }
 
@@ -2315,23 +2404,68 @@ main section[id] {
   }
 
   .hero-intro {
+    grid-column: 1 / -1;
+    grid-row: 5;
     margin-top: 28px;
     font-size: 15px;
   }
 
   .hero-actions {
+    grid-column: 1 / -1;
+    grid-row: 6;
     gap: 20px;
     margin-top: 30px;
   }
 
   .hero-stats {
-    margin-top: 42px;
+    grid-column: 1 / -1;
+    grid-row: 7;
+    margin-top: 32px;
+  }
+
+  .hero-stats strong {
+    font-size: clamp(30px, 8.5vw, 36px);
   }
 
   .hero-visual {
     width: 100%;
+    grid-column: 2;
+    grid-row: 2 / span 2;
+    aspect-ratio: 0.76;
     min-height: 0;
-    margin-top: 22px;
+    align-self: start;
+    margin: 12px 0 0;
+    border-radius: 90px 90px 12px 12px;
+    box-shadow: 0 16px 38px rgba(21, 39, 31, 0.17);
+  }
+
+  .portrait-frame {
+    inset: 6px;
+    border-radius: 82px 82px 8px 8px;
+  }
+
+  .visual-grid,
+  .visual-coordinate,
+  .orbit,
+  .portrait-caption,
+  .portrait-chip {
+    display: none;
+  }
+
+  .hero-section-nav {
+    grid-column: 1 / -1;
+    grid-row: 8;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    margin-top: 34px;
+  }
+
+  .hero-section-nav a {
+    min-height: 104px;
+    padding: 16px 18px;
+  }
+
+  .hero-section-nav a strong {
+    font-size: 22px;
   }
 
   .section {
@@ -2552,11 +2686,11 @@ main section[id] {
   }
 
   .hero-stats strong {
-    font-size: 23px;
+    font-size: 31px;
   }
 
   .hero-visual {
-    aspect-ratio: 0.85;
+    aspect-ratio: 0.76;
   }
 
   .visual-caption {
